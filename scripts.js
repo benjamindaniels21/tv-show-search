@@ -11,14 +11,32 @@ form.addEventListener("submit", async (e) => {
   );
   createImages(response.data);
   form.elements.query.value = "";
+  const movieDiv = document.createElement("div");
 });
 
 const createImages = (shows) => {
   for (let result of shows) {
     if (result.show.image) {
       const img = document.createElement("IMG");
+      img.classList.add("movieImage");
       img.src = result.show.image.medium;
-      document.body.append(img);
+      movieDiv.appendChild(img);
+      document.body.append(movieDiv);
     }
   }
 };
+
+//remove all previous images
+
+// const removeImages = () => {
+//   const images = document.getElementsByTagName("img");
+
+//   console.log(images);
+//   for (let i = images.length; i > 0; i--) {}
+// };
+
+// const btn = document.getElementById("clearList");
+
+// btn.addEventListener("click", () => {
+//   removeImages();
+// });
